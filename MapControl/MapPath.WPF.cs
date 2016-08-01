@@ -20,9 +20,6 @@ namespace MapControl
             set { SetValue(DataProperty, value); }
         }
 
-        protected override Geometry DefiningGeometry
-        {
-            get { return Data; }
-        }
+        protected override Geometry DefiningGeometry => Data;
     }
 }

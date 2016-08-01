@@ -19,10 +19,7 @@ namespace MapControl
     {
         private static readonly double maxLatitude = Math.Atan(Math.Sinh(Math.PI)) / Math.PI * 180d;
 
-        public override double MaxLatitude
-        {
-            get { return maxLatitude; }
-        }
+        public override double MaxLatitude => maxLatitude;
 
         public override double RelativeScale(Location location)
         {

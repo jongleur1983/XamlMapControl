@@ -64,10 +64,7 @@ namespace Caching
 
         public override string Name { get; }
 
-        public override DefaultCacheCapabilities DefaultCacheCapabilities
-        {
-            get { return DefaultCacheCapabilities.InMemoryProvider; }
-        }
+        public override DefaultCacheCapabilities DefaultCacheCapabilities => DefaultCacheCapabilities.InMemoryProvider;
 
         public override object this[string key]
         {

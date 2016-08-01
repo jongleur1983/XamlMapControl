@@ -43,10 +43,7 @@ namespace MapControl
             updateTimer.Tick += UpdateTiles;
         }
 
-        public IEnumerable<TileLayer> TileLayers
-        {
-            get { return InternalChildren.Cast<TileLayer>(); }
-        }
+        public IEnumerable<TileLayer> TileLayers => InternalChildren.Cast<TileLayer>();
 
         public void AddTileLayers(int index, IEnumerable<TileLayer> tileLayers)
         {
