@@ -32,23 +32,23 @@ namespace MapControl
         public static EasingFunctionBase AnimationEasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseOut };
 
         public static readonly DependencyProperty TileLayersProperty = DependencyProperty.Register(
-            "TileLayers", typeof(TileLayerCollection), typeof(MapBase), new PropertyMetadata(null,
+            nameof(TileLayers), typeof(TileLayerCollection), typeof(MapBase), new PropertyMetadata(null,
                 (o, e) => ((MapBase)o).TileLayersPropertyChanged((TileLayerCollection)e.OldValue, (TileLayerCollection)e.NewValue)));
 
         public static readonly DependencyProperty TileLayerProperty = DependencyProperty.Register(
-            "TileLayer", typeof(TileLayer), typeof(MapBase), new PropertyMetadata(null,
+            nameof(TileLayer), typeof(TileLayer), typeof(MapBase), new PropertyMetadata(null,
                 (o, e) => ((MapBase)o).TileLayerPropertyChanged((TileLayer)e.NewValue)));
 
         public static readonly DependencyProperty TileOpacityProperty = DependencyProperty.Register(
-            "TileOpacity", typeof(double), typeof(MapBase), new PropertyMetadata(1d,
+            nameof(TileOpacity), typeof(double), typeof(MapBase), new PropertyMetadata(1d,
                 (o, e) => ((MapBase)o).tileContainer.Opacity = (double)e.NewValue));
 
         public static readonly DependencyProperty MinZoomLevelProperty = DependencyProperty.Register(
-            "MinZoomLevel", typeof(double), typeof(MapBase), new PropertyMetadata(1d,
+            nameof(MinZoomLevel), typeof(double), typeof(MapBase), new PropertyMetadata(1d,
                 (o, e) => ((MapBase)o).MinZoomLevelPropertyChanged((double)e.NewValue)));
 
         public static readonly DependencyProperty MaxZoomLevelProperty = DependencyProperty.Register(
-            "MaxZoomLevel", typeof(double), typeof(MapBase), new PropertyMetadata(18d,
+            nameof(MaxZoomLevel), typeof(double), typeof(MapBase), new PropertyMetadata(18d,
                 (o, e) => ((MapBase)o).MaxZoomLevelPropertyChanged((double)e.NewValue)));
 
         internal static readonly DependencyProperty CenterPointProperty = DependencyProperty.Register(
