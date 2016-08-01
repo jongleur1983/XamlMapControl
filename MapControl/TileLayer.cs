@@ -27,18 +27,12 @@ namespace MapControl
 #endif
     public class TileLayer : PanelBase
     {
-        public static TileLayer Default
+        public static TileLayer Default => new TileLayer
         {
-            get
-            {
-                return new TileLayer
-                {
-                    SourceName = "OpenStreetMap",
-                    Description = "© {y} OpenStreetMap Contributors, CC-BY-SA",
-                    TileSource = new TileSource("http://{c}.tile.openstreetmap.org/{z}/{x}/{y}.png")
-                };
-            }
-        }
+            SourceName = "OpenStreetMap",
+            Description = "© {y} OpenStreetMap Contributors, CC-BY-SA",
+            TileSource = new TileSource("http://{c}.tile.openstreetmap.org/{z}/{x}/{y}.png")
+        };
 
         private readonly TileImageLoader tileImageLoader = new TileImageLoader();
         private string description = string.Empty;
