@@ -15,7 +15,8 @@ namespace MapControl
     public class MapScale : MapOverlay
     {
         public static readonly DependencyProperty PaddingProperty = Control.PaddingProperty.AddOwner(
-            typeof(MapScale), new FrameworkPropertyMetadata(new Thickness(2d)));
+            typeof(MapScale),
+            new FrameworkPropertyMetadata(new Thickness(2d)));
 
         private double length;
         private Size size;
@@ -23,22 +24,28 @@ namespace MapControl
         static MapScale()
         {
             UIElement.IsHitTestVisibleProperty.OverrideMetadata(
-                typeof(MapScale), new FrameworkPropertyMetadata(false));
+                typeof(MapScale),
+                new FrameworkPropertyMetadata(false));
 
             FrameworkElement.MinWidthProperty.OverrideMetadata(
-                typeof(MapScale), new FrameworkPropertyMetadata(100d));
+                typeof(MapScale),
+                new FrameworkPropertyMetadata(100d));
 
             FrameworkElement.HorizontalAlignmentProperty.OverrideMetadata(
-                typeof(MapScale), new FrameworkPropertyMetadata(HorizontalAlignment.Right));
+                typeof(MapScale),
+                new FrameworkPropertyMetadata(HorizontalAlignment.Right));
 
             FrameworkElement.VerticalAlignmentProperty.OverrideMetadata(
-                typeof(MapScale), new FrameworkPropertyMetadata(VerticalAlignment.Bottom));
+                typeof(MapScale),
+                new FrameworkPropertyMetadata(VerticalAlignment.Bottom));
 
             MapOverlay.StrokeStartLineCapProperty.OverrideMetadata(
-                typeof(MapScale), new FrameworkPropertyMetadata(PenLineCap.Round));
+                typeof(MapScale),
+                new FrameworkPropertyMetadata(PenLineCap.Round));
 
             MapOverlay.StrokeEndLineCapProperty.OverrideMetadata(
-                typeof(MapScale), new FrameworkPropertyMetadata(PenLineCap.Round));
+                typeof(MapScale),
+                new FrameworkPropertyMetadata(PenLineCap.Round));
         }
 
         public Thickness Padding

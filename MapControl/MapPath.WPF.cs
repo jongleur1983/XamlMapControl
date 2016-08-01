@@ -11,8 +11,12 @@ namespace MapControl
     public partial class MapPath : Shape
     {
         public static readonly DependencyProperty DataProperty = DependencyProperty.Register(
-            "Data", typeof(Geometry), typeof(MapPath),
-            new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender));
+            nameof(Data),
+            typeof(Geometry),
+            typeof(MapPath),
+            new FrameworkPropertyMetadata(
+                null,
+                FrameworkPropertyMetadataOptions.AffectsRender));
 
         public Geometry Data
         {

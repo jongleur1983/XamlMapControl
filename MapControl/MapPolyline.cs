@@ -28,12 +28,20 @@ namespace MapControl
         private static readonly Type LocationsPropertyType = typeof(IEnumerable<Location>);
 #endif
         public static readonly DependencyProperty LocationsProperty = DependencyProperty.Register(
-            "Locations", LocationsPropertyType, typeof(MapPolyline),
-            new PropertyMetadata(null, LocationsPropertyChanged));
+            nameof(Locations),
+            LocationsPropertyType,
+            typeof(MapPolyline),
+            new PropertyMetadata(
+                null,
+                LocationsPropertyChanged));
 
         public static readonly DependencyProperty IsClosedProperty = DependencyProperty.Register(
-            "IsClosed", typeof(bool), typeof(MapPolyline),
-            new PropertyMetadata(false, (o, e) => ((MapPolyline)o).UpdateData()));
+            nameof(IsClosed),
+            typeof(bool),
+            typeof(MapPolyline),
+            new PropertyMetadata(
+                false,
+                (o, e) => ((MapPolyline)o).UpdateData()));
 
         /// <summary>
         /// Gets or sets the locations that define the polyline points.

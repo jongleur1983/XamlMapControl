@@ -29,10 +29,12 @@ namespace MapControl
         static MapGraticule()
         {
             UIElement.IsHitTestVisibleProperty.OverrideMetadata(
-                typeof(MapGraticule), new FrameworkPropertyMetadata(false));
+                typeof(MapGraticule),
+                new FrameworkPropertyMetadata(false));
 
             MapOverlay.StrokeThicknessProperty.OverrideMetadata(
-                typeof(MapGraticule), new FrameworkPropertyMetadata(0.5, (o, e) => ((MapGraticule)o).glyphRuns.Clear()));
+                typeof(MapGraticule),
+                new FrameworkPropertyMetadata(0.5, (o, e) => ((MapGraticule)o).glyphRuns.Clear()));
         }
 
         protected override void OnViewportChanged()

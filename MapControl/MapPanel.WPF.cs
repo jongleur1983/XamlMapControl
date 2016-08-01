@@ -9,8 +9,13 @@ namespace MapControl
     public partial class MapPanel
     {
         private static readonly DependencyPropertyKey ParentMapPropertyKey = DependencyProperty.RegisterAttachedReadOnly(
-            "ParentMap", typeof(MapBase), typeof(MapPanel),
-            new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits, ParentMapPropertyChanged));
+            nameof(ParentMap),
+            typeof(MapBase),
+            typeof(MapPanel),
+            new FrameworkPropertyMetadata(
+                null,
+                FrameworkPropertyMetadataOptions.Inherits,
+                ParentMapPropertyChanged));
 
         public static readonly DependencyProperty ParentMapProperty = ParentMapPropertyKey.DependencyProperty;
 

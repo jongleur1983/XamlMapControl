@@ -22,10 +22,16 @@ namespace MapControl
     public partial class MapPanel : PanelBase, IMapElement
     {
         public static readonly DependencyProperty LocationProperty = DependencyProperty.RegisterAttached(
-            "Location", typeof(Location), typeof(MapPanel), new PropertyMetadata(null, LocationPropertyChanged));
+            nameof(Location),
+            typeof(Location),
+            typeof(MapPanel),
+            new PropertyMetadata(null, LocationPropertyChanged));
 
         public static readonly DependencyProperty ViewportPositionProperty = DependencyProperty.RegisterAttached(
-            "ViewportPosition", typeof(Point?), typeof(MapPanel), null);
+            "ViewportPosition",
+            typeof(Point?),
+            typeof(MapPanel),
+            null);
 
         public static Location GetLocation(UIElement element)
         {

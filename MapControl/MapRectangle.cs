@@ -19,20 +19,36 @@ namespace MapControl
     public class MapRectangle : MapPath
     {
         public static readonly DependencyProperty SouthProperty = DependencyProperty.Register(
-            "South", typeof(double), typeof(MapRectangle),
-            new PropertyMetadata(double.NaN, (o, e) => ((MapRectangle)o).UpdateData()));
+            nameof(South),
+            typeof(double),
+            typeof(MapRectangle),
+            new PropertyMetadata(
+                double.NaN,
+                (o, e) => ((MapRectangle)o).UpdateData()));
 
         public static readonly DependencyProperty NorthProperty = DependencyProperty.Register(
-            "North", typeof(double), typeof(MapRectangle),
-            new PropertyMetadata(double.NaN, (o, e) => ((MapRectangle)o).UpdateData()));
+            nameof(North),
+            typeof(double),
+            typeof(MapRectangle),
+            new PropertyMetadata(
+                double.NaN,
+                (o, e) => ((MapRectangle)o).UpdateData()));
 
         public static readonly DependencyProperty WestProperty = DependencyProperty.Register(
-            "West", typeof(double), typeof(MapRectangle),
-            new PropertyMetadata(double.NaN, (o, e) => ((MapRectangle)o).UpdateData()));
+            nameof(West),
+            typeof(double),
+            typeof(MapRectangle),
+            new PropertyMetadata(
+                double.NaN,
+                (o, e) => ((MapRectangle)o).UpdateData()));
 
         public static readonly DependencyProperty EastProperty = DependencyProperty.Register(
-            "East", typeof(double), typeof(MapRectangle),
-            new PropertyMetadata(double.NaN, (o, e) => ((MapRectangle)o).UpdateData()));
+            nameof(East),
+            typeof(double),
+            typeof(MapRectangle),
+            new PropertyMetadata(
+                double.NaN,
+                (o, e) => ((MapRectangle)o).UpdateData()));
 
         public MapRectangle()
         {

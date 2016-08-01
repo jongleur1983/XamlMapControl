@@ -32,27 +32,52 @@ namespace MapControl
         public static EasingFunctionBase AnimationEasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseOut };
 
         public static readonly DependencyProperty TileLayersProperty = DependencyProperty.Register(
-            nameof(TileLayers), typeof(TileLayerCollection), typeof(MapBase), new PropertyMetadata(null,
+            nameof(TileLayers),
+            typeof(TileLayerCollection),
+            typeof(MapBase),
+            new PropertyMetadata(
+                null,
                 (o, e) => ((MapBase)o).TileLayersPropertyChanged((TileLayerCollection)e.OldValue, (TileLayerCollection)e.NewValue)));
 
         public static readonly DependencyProperty TileLayerProperty = DependencyProperty.Register(
-            nameof(TileLayer), typeof(TileLayer), typeof(MapBase), new PropertyMetadata(null,
+            nameof(TileLayer),
+            typeof(TileLayer),
+            typeof(MapBase),
+            new PropertyMetadata(
+                null,
                 (o, e) => ((MapBase)o).TileLayerPropertyChanged((TileLayer)e.NewValue)));
 
         public static readonly DependencyProperty TileOpacityProperty = DependencyProperty.Register(
-            nameof(TileOpacity), typeof(double), typeof(MapBase), new PropertyMetadata(1d,
+            nameof(TileOpacity),
+            typeof(double),
+            typeof(MapBase),
+            new PropertyMetadata(
+                1d,
                 (o, e) => ((MapBase)o).tileContainer.Opacity = (double)e.NewValue));
 
         public static readonly DependencyProperty MinZoomLevelProperty = DependencyProperty.Register(
-            nameof(MinZoomLevel), typeof(double), typeof(MapBase), new PropertyMetadata(1d,
+            nameof(MinZoomLevel),
+            typeof(double),
+            typeof(MapBase),
+            new PropertyMetadata(
+                1d,
                 (o, e) => ((MapBase)o).MinZoomLevelPropertyChanged((double)e.NewValue)));
 
         public static readonly DependencyProperty MaxZoomLevelProperty = DependencyProperty.Register(
-            nameof(MaxZoomLevel), typeof(double), typeof(MapBase), new PropertyMetadata(18d,
+            nameof(MaxZoomLevel),
+            typeof(double),
+            typeof(MapBase),
+            new PropertyMetadata(
+                18d,
                 (o, e) => ((MapBase)o).MaxZoomLevelPropertyChanged((double)e.NewValue)));
 
+        //TODO: inspect what the CenterPoint property does as it's not directly backed by a CLR property.
         internal static readonly DependencyProperty CenterPointProperty = DependencyProperty.Register(
-            "CenterPoint", typeof(Point), typeof(MapBase), new PropertyMetadata(new Point(),
+            "CenterPoint",
+            typeof(Point),
+            typeof(MapBase),
+            new PropertyMetadata(
+                new Point(),
                 (o, e) => ((MapBase)o).CenterPointPropertyChanged((Point)e.NewValue)));
 
         private readonly TileContainer tileContainer = new TileContainer();
@@ -81,6 +106,7 @@ namespace MapControl
         }
 
         partial void Initialize();
+
         partial void RemoveAnimation(DependencyProperty property);
 
         /// <summary>

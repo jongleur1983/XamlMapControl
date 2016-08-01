@@ -23,7 +23,10 @@ namespace MapControl
             new double[] { 1d / 60d, 1d / 30d, 1d / 12d, 1d / 6d, 1d / 4d, 1d / 3d, 1d / 2d, 1d, 2d, 5d, 10d, 15d, 20d, 30d, 45d };
 
         public static readonly DependencyProperty MinLineSpacingProperty = DependencyProperty.Register(
-            "MinLineSpacing", typeof(double), typeof(MapGraticule), new PropertyMetadata(150d));
+            nameof(MinLineSpacing),
+            typeof(double),
+            typeof(MapGraticule),
+            new PropertyMetadata(150d));
 
         /// <summary>
         /// Minimum spacing in pixels between adjacent graticule lines.

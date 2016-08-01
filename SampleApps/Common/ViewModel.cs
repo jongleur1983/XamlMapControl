@@ -34,7 +34,7 @@ namespace ViewModel
             set
             {
                 name = value;
-                RaisePropertyChanged("Name");
+                RaisePropertyChanged(nameof(Name));
             }
         }
 
@@ -45,7 +45,7 @@ namespace ViewModel
             set
             {
                 location = value;
-                RaisePropertyChanged("Location");
+                RaisePropertyChanged(nameof(Location));
             }
         }
     }
@@ -68,7 +68,7 @@ namespace ViewModel
             set
             {
                 mapCenter = value;
-                RaisePropertyChanged("MapCenter");
+                RaisePropertyChanged(nameof(MapCenter));
             }
         }
 

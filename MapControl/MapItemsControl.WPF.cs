@@ -18,7 +18,9 @@ namespace MapControl
     public class MapItemsControl : ListBox
     {
         public static readonly DependencyProperty SelectionGeometryProperty = DependencyProperty.Register(
-            "SelectionGeometry", typeof(Geometry), typeof(MapItemsControl),
+            nameof(SelectionGeometry),
+            typeof(Geometry),
+            typeof(MapItemsControl),
             new PropertyMetadata((o, e) => ((MapItemsControl)o).SelectionGeometryPropertyChanged((Geometry)e.NewValue)));
 
         static MapItemsControl()

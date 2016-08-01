@@ -18,8 +18,12 @@ namespace MapControl
     public class MapImage : MapRectangle
     {
         public static readonly DependencyProperty SourceProperty = DependencyProperty.Register(
-            "Source", typeof(ImageSource), typeof(MapImage),
-            new PropertyMetadata(null, (o, e) => ((MapImage)o).SourceChanged((ImageSource)e.NewValue)));
+            nameof(Source),
+            typeof(ImageSource),
+            typeof(MapImage),
+            new PropertyMetadata(
+                null,
+                (o, e) => ((MapImage)o).SourceChanged((ImageSource)e.NewValue)));
 
         public ImageSource Source
         {

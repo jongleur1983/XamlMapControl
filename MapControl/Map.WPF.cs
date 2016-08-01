@@ -13,10 +13,16 @@ namespace MapControl
     public class Map : MapBase
     {
         public static readonly DependencyProperty ManipulationModeProperty = DependencyProperty.Register(
-            nameof(ManipulationMode), typeof(ManipulationModes), typeof(Map), new PropertyMetadata(ManipulationModes.All));
+            nameof(ManipulationMode),
+            typeof(ManipulationModes),
+            typeof(Map),
+            new PropertyMetadata(ManipulationModes.All));
 
         public static readonly DependencyProperty MouseWheelZoomDeltaProperty = DependencyProperty.Register(
-            nameof(MouseWheelZoomDelta), typeof(double), typeof(Map), new PropertyMetadata(1d));
+            nameof(MouseWheelZoomDelta),
+            typeof(double),
+            typeof(Map),
+            new PropertyMetadata(1d));
 
         private Point? mousePosition;
 

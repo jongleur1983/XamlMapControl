@@ -14,33 +14,55 @@ namespace MapControl
             System.Windows.Controls.Control.ForegroundProperty.AddOwner(typeof(MapBase));
 
         public static readonly DependencyProperty CenterProperty = DependencyProperty.Register(
-            "Center", typeof(Location), typeof(MapBase), new FrameworkPropertyMetadata(
-                new Location(), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
+            nameof(Center),
+            typeof(Location),
+            typeof(MapBase),
+            new FrameworkPropertyMetadata(
+                new Location(),
+                FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
                 (o, e) => ((MapBase)o).CenterPropertyChanged((Location)e.NewValue)));
 
         public static readonly DependencyProperty TargetCenterProperty = DependencyProperty.Register(
-            "TargetCenter", typeof(Location), typeof(MapBase), new FrameworkPropertyMetadata(
+            nameof(TargetCenter),
+            typeof(Location),
+            typeof(MapBase),
+            new FrameworkPropertyMetadata(
                 new Location(), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
                 (o, e) => ((MapBase)o).TargetCenterPropertyChanged((Location)e.NewValue)));
 
         public static readonly DependencyProperty ZoomLevelProperty = DependencyProperty.Register(
-            "ZoomLevel", typeof(double), typeof(MapBase), new FrameworkPropertyMetadata(
+            nameof(ZoomLevel),
+            typeof(double),
+            typeof(MapBase),
+            new FrameworkPropertyMetadata(
                 1d, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
                 (o, e) => ((MapBase)o).ZoomLevelPropertyChanged((double)e.NewValue)));
 
         public static readonly DependencyProperty TargetZoomLevelProperty = DependencyProperty.Register(
-            "TargetZoomLevel", typeof(double), typeof(MapBase), new FrameworkPropertyMetadata(
-                1d, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
+            nameof(TargetZoomLevel),
+            typeof(double),
+            typeof(MapBase),
+            new FrameworkPropertyMetadata(
+                1d,
+                FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
                 (o, e) => ((MapBase)o).TargetZoomLevelPropertyChanged((double)e.NewValue)));
 
         public static readonly DependencyProperty HeadingProperty = DependencyProperty.Register(
-            "Heading", typeof(double), typeof(MapBase), new FrameworkPropertyMetadata(
-                0d, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
+            nameof(Heading),
+            typeof(double),
+            typeof(MapBase),
+            new FrameworkPropertyMetadata(
+                0d,
+                FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
                 (o, e) => ((MapBase)o).HeadingPropertyChanged((double)e.NewValue)));
 
         public static readonly DependencyProperty TargetHeadingProperty = DependencyProperty.Register(
-            "TargetHeading", typeof(double), typeof(MapBase), new FrameworkPropertyMetadata(
-                0d, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
+            nameof(TargetHeading),
+            typeof(double),
+            typeof(MapBase),
+            new FrameworkPropertyMetadata(
+                0d,
+                FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
                 (o, e) => ((MapBase)o).TargetHeadingPropertyChanged((double)e.NewValue)));
 
         static MapBase()

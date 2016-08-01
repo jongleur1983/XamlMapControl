@@ -25,11 +25,18 @@ namespace MapControl
     public partial class MapImageLayer : MapPanel
     {
         public static readonly DependencyProperty UriFormatProperty = DependencyProperty.Register(
-            "UriFormat", typeof(string), typeof(MapImageLayer),
-            new PropertyMetadata(null, (o, e) => ((MapImageLayer)o).UpdateImage()));
+            nameof(UriFormat),
+            typeof(string),
+            typeof(MapImageLayer),
+            new PropertyMetadata(
+                null,
+                (o, e) => ((MapImageLayer)o).UpdateImage()));
 
         public static readonly DependencyProperty RelativeImageSizeProperty = DependencyProperty.Register(
-            "RelativeImageSize", typeof(double), typeof(MapImageLayer), new PropertyMetadata(1d));
+            nameof(RelativeImageSize),
+            typeof(double),
+            typeof(MapImageLayer),
+            new PropertyMetadata(1d));
 
         private int currentImageIndex;
         private bool updateInProgress;

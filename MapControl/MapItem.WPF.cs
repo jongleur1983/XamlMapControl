@@ -15,7 +15,8 @@ namespace MapControl
         static MapItem()
         {
             DefaultStyleKeyProperty.OverrideMetadata(
-                typeof(MapItem), new FrameworkPropertyMetadata(typeof(MapItem)));
+                typeof(MapItem),
+                new FrameworkPropertyMetadata(typeof(MapItem)));
         }
     }
 }
