@@ -119,7 +119,7 @@ namespace MapControl
             var maxZoomLevel = Math.Min(zoomLevel, MaxZoomLevel);
             var minZoomLevel = maxZoomLevel;
 
-            if (LoadLowerZoomLevels && Parent is TileContainer && ((TileContainer)Parent).TileLayers.FirstOrDefault() == this)
+            if (LoadLowerZoomLevels && Parent is TileContainer && ReferenceEquals(((TileContainer)Parent).TileLayers.FirstOrDefault(), this))
             {
                 minZoomLevel = MinZoomLevel;
             }
