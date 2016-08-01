@@ -211,54 +211,32 @@ namespace MapControl
         /// <summary>
         /// Gets the transformation from geographic coordinates to cartesian map coordinates.
         /// </summary>
-        public MapTransform MapTransform
-        {
-            get { return mapTransform; }
-        }
+        public MapTransform MapTransform => mapTransform;
 
         /// <summary>
         /// Gets the transformation from cartesian map coordinates to viewport coordinates.
         /// </summary>
-        public Transform ViewportTransform
-        {
-            get { return tileContainer.ViewportTransform; }
-        }
+        public Transform ViewportTransform => tileContainer.ViewportTransform;
 
         /// <summary>
         /// Gets the scaling transformation from meters to viewport coordinate units (pixels) at the Center location.
         /// </summary>
-        public Transform ScaleTransform
-        {
-            get { return scaleTransform; }
-        }
+        public Transform ScaleTransform => scaleTransform;
 
         /// <summary>
         /// Gets the transformation that rotates by the value of the Heading property.
         /// </summary>
-        public Transform RotateTransform
-        {
-            get { return rotateTransform; }
-        }
+        public Transform RotateTransform => rotateTransform;
 
         /// <summary>
         /// Gets the combination of ScaleTransform and RotateTransform
         /// </summary>
-        public Transform ScaleRotateTransform
-        {
-            get { return scaleRotateTransform; }
-        }
+        public Transform ScaleRotateTransform => scaleRotateTransform;
 
         /// <summary>
         /// Gets the conversion factor from longitude degrees to meters, at latitude = 0.
         /// </summary>
-        public double MetersPerDegree
-        {
-            get
-            {
-                return (TileLayer != null && TileLayer.TileSource != null) ?
-                    TileLayer.TileSource.MetersPerDegree : (TileSource.EarthRadius * Math.PI / 180d);
-            }
-        }
+        public double MetersPerDegree => TileLayer?.TileSource?.MetersPerDegree ?? (TileSource.EarthRadius * Math.PI / 180d);
 
         /// <summary>
         /// Gets the map scale at the specified location as viewport coordinate units (pixels) per meter.
