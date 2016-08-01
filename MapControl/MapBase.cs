@@ -375,10 +375,7 @@ namespace MapControl
         {
             base.OnViewportChanged();
 
-            if (ViewportChanged != null)
-            {
-                ViewportChanged(this, EventArgs.Empty);
-            }
+            ViewportChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
@@ -464,7 +461,7 @@ namespace MapControl
                 }
             }
 
-            if (tileLayer != null && tileLayer.Background != null)
+            if (tileLayer?.Background != null)
             {
                 if (storedBackground == null)
                 {
@@ -479,7 +476,7 @@ namespace MapControl
                 storedBackground = null;
             }
 
-            if (tileLayer != null && tileLayer.Foreground != null)
+            if (tileLayer?.Foreground != null)
             {
                 if (storedForeground == null)
                 {
