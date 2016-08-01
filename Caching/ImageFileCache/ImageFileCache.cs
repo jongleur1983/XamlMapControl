@@ -36,7 +36,6 @@ namespace Caching
             new SecurityIdentifier(WellKnownSidType.BuiltinUsersSid, null),
             FileSystemRights.FullControl, AccessControlType.Allow);
 
-        private readonly string name;
         private readonly string directory;
 
         public ImageFileCache(string name, NameValueCollection config)
@@ -56,17 +55,14 @@ namespace Caching
                 throw new ArgumentException("The parameter directory must not be null or empty or only white-space.", nameof(directory));
             }
 
-            this.name = name;
+            this.Name = name;
             this.directory = Path.Combine(directory, name.Trim());
             Directory.CreateDirectory(this.directory);
 
             Trace.TraceInformation("Created ImageFileCache in {0}", this.directory);
         }
 
-        public override string Name
-        {
-            get { return name; }
-        }
+        public override string Name { get; }
 
         public override DefaultCacheCapabilities DefaultCacheCapabilities
         {

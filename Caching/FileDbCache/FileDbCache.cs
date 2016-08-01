@@ -24,7 +24,6 @@ namespace Caching
 
         private readonly BinaryFormatter formatter = new BinaryFormatter();
         private readonly FileDb fileDb = new FileDb { AutoFlush = false, AutoCleanThreshold = -1 };
-        private readonly string name;
         private readonly string path;
 
         public FileDbCache(string name, NameValueCollection config)
@@ -70,7 +69,7 @@ namespace Caching
                 throw new ArgumentException("The parameter directory must not be null or empty or only white-space.", nameof(directory));
             }
 
-            this.name = name;
+            this.Name = name;
             path = Path.Combine(directory, name.Trim());
 
             if (string.IsNullOrEmpty(Path.GetExtension(path)))
@@ -114,10 +113,7 @@ namespace Caching
             set { fileDb.AutoCleanThreshold = value; }
         }
 
-        public override string Name
-        {
-            get { return name; }
-        }
+        public override string Name { get; }
 
         public override DefaultCacheCapabilities DefaultCacheCapabilities
         {
