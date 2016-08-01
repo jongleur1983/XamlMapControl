@@ -48,12 +48,12 @@ namespace Caching
         {
             if (string.IsNullOrWhiteSpace(name))
             {
-                throw new ArgumentException("The parameter name must not be null or empty or only white-space.");
+                throw new ArgumentException("The parameter name must not be null or empty or only white-space.", nameof(name));
             }
 
             if (string.IsNullOrWhiteSpace(directory))
             {
-                throw new ArgumentException("The parameter directory must not be null or empty or only white-space.");
+                throw new ArgumentException("The parameter directory must not be null or empty or only white-space.", nameof(directory));
             }
 
             this.name = name;

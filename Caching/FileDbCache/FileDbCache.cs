@@ -41,7 +41,7 @@ namespace Caching
                 }
                 catch (Exception ex)
                 {
-                    throw new ArgumentException("The configuration parameter autoFlush must be a boolean value.", ex);
+                    throw new ArgumentException("The configuration parameter autoFlush must be a boolean value.", nameof(autoFlush), ex);
                 }
             }
 
@@ -53,7 +53,7 @@ namespace Caching
                 }
                 catch (Exception ex)
                 {
-                    throw new ArgumentException("The configuration parameter autoCleanThreshold must be an integer value.", ex);
+                    throw new ArgumentException("The configuration parameter autoCleanThreshold must be an integer value.", nameof(autoCleanThreshold), ex);
                 }
             }
         }
@@ -62,12 +62,12 @@ namespace Caching
         {
             if (string.IsNullOrWhiteSpace(name))
             {
-                throw new ArgumentException("The parameter name must not be null or empty or only white-space.");
+                throw new ArgumentException("The parameter name must not be null or empty or only white-space.", nameof(name));
             }
 
             if (string.IsNullOrWhiteSpace(directory))
             {
-                throw new ArgumentException("The parameter directory must not be null or empty or only white-space.");
+                throw new ArgumentException("The parameter directory must not be null or empty or only white-space.", nameof(directory));
             }
 
             this.name = name;
@@ -197,7 +197,7 @@ namespace Caching
         {
             if (key == null)
             {
-                throw new ArgumentNullException("The parameter key must not be null.");
+                throw new ArgumentNullException(nameof(key), "The parameter key must not be null.");
             }
 
             if (regionName != null)
@@ -212,7 +212,7 @@ namespace Caching
         {
             if (key == null)
             {
-                throw new ArgumentNullException("The parameter key must not be null.");
+                throw new ArgumentNullException(nameof(key), "The parameter key must not be null.");
             }
 
             if (regionName != null)
@@ -277,12 +277,12 @@ namespace Caching
         {
             if (key == null)
             {
-                throw new ArgumentNullException("The parameter key must not be null.");
+                throw new ArgumentNullException(nameof(key), "The parameter key must not be null.");
             }
 
             if (value == null)
             {
-                throw new ArgumentNullException("The parameter value must not be null.");
+                throw new ArgumentNullException(nameof(value), "The parameter value must not be null.");
             }
 
             if (regionName != null)
