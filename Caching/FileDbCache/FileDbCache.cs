@@ -139,7 +139,7 @@ namespace Caching
         {
             if (regionName != null)
             {
-                throw new NotSupportedException("The parameter regionName must be null.");
+                throw new NotSupportedException("The parameter regionName must be null."); // TODO: why isn't this an ArgumentException?
             }
 
             long count = 0;
@@ -197,7 +197,7 @@ namespace Caching
 
             if (regionName != null)
             {
-                throw new NotSupportedException("The parameter regionName must be null.");
+                throw new NotSupportedException("The parameter regionName must be null."); // TODO: why isn't this an ArgumentException?
             }
 
             return GetRecord(key) != null;
@@ -212,7 +212,7 @@ namespace Caching
 
             if (regionName != null)
             {
-                throw new NotSupportedException("The parameter regionName must be null.");
+                throw new NotSupportedException("The parameter regionName must be null."); // TODO: why isn't this an ArgumentException?
             }
 
             object value = null;
@@ -255,7 +255,7 @@ namespace Caching
         {
             if (regionName != null)
             {
-                throw new NotSupportedException("The parameter regionName must be null.");
+                throw new NotSupportedException("The parameter regionName must be null."); // TODO: why isn't this an ArgumentException?
             }
 
             var values = new Dictionary<string, object>();
@@ -282,7 +282,7 @@ namespace Caching
 
             if (regionName != null)
             {
-                throw new NotSupportedException("The parameter regionName must be null.");
+                throw new NotSupportedException("The parameter regionName must be null."); // TODO: why isn't this an ArgumentException?
             }
 
             if (fileDb.IsOpen)

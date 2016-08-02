@@ -108,7 +108,7 @@ namespace Caching
         {
             if (regionName != null)
             {
-                throw new NotSupportedException("The parameter regionName must be null.");
+                throw new NotSupportedException("The parameter regionName must be null."); // TODO: why not an ArgumentException here?
             }
 
             var value = MemoryCache.Default.Get(key);
@@ -150,7 +150,7 @@ namespace Caching
         {
             if (regionName != null)
             {
-                throw new NotSupportedException("The parameter regionName must be null.");
+                throw new NotSupportedException("The parameter regionName must be null."); // TODO: why not an ArgumentException here?
             }
 
             var values = new Dictionary<string, object>();
@@ -167,14 +167,14 @@ namespace Caching
         {
             if (regionName != null)
             {
-                throw new NotSupportedException("The parameter regionName must be null.");
+                throw new NotSupportedException("The parameter regionName must be null."); // TODO: why not an ArgumentException here?
             }
 
             var buffer = value as byte[];
 
             if (buffer == null || buffer.Length <= 8)
             {
-                throw new NotSupportedException("The parameter value must be a byte[] containing at least 9 bytes.");
+                throw new NotSupportedException("The parameter value must be a byte[] containing at least 9 bytes."); // TODO: why not an ArgumentException here?
             }
 
             MemoryCache.Default.Set(key, buffer, policy);

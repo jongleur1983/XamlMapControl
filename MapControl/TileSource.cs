@@ -44,7 +44,7 @@ namespace MapControl
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException("The value of the UriFormat property must not be null or empty or white-space only.");
+                    throw new ArgumentException("The value of the UriFormat property must not be null or empty or white-space only."); // TODO: is it an argument exception on a property setter?
                 }
 
                 uriFormat = value;
