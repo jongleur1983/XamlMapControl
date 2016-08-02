@@ -236,7 +236,7 @@ namespace MapControl
                 if (parentSize.IsEmpty)
                 {
                     var parent = frameworkElement.Parent as UIElement;
-                    parentSize = parent != null ? parent.RenderSize : new Size();
+                    parentSize = parent?.RenderSize ?? new Size();
                 }
 
                 switch (frameworkElement.HorizontalAlignment)

@@ -89,7 +89,7 @@ namespace MapControl
 
         public virtual Uri GetUri(int x, int y, int zoomLevel, int rotation)
         {
-            return getUri != null ? getUri(x, y, zoomLevel, rotation) : null;
+            return getUri?.Invoke(x, y, zoomLevel, rotation);
         }
 
         private Uri GetBasicUri(int x, int y, int zoomLevel, int rotation)

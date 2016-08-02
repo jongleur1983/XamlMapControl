@@ -93,7 +93,7 @@ namespace MapControl
                 var x2 = size.Width - Padding.Right - StrokeThickness / 2d;
                 var y1 = size.Height / 2d;
                 var y2 = size.Height - Padding.Bottom - StrokeThickness / 2d;
-                var text = length >= 1000d ? string.Format("{0:0} km", length / 1000d) : string.Format("{0:0} m", length);
+                var text = length >= 1000d ? $"{length/1000d:0} km" : $"{length:0} m";
 
                 drawingContext.DrawRectangle(Background ?? ParentMap.Background, null, new Rect(size));
                 drawingContext.DrawLine(Pen, new Point(x1, y1), new Point(x1, y2));

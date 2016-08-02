@@ -477,9 +477,11 @@ namespace Caching
 
         private void AddOrUpdateRecord(string key, object value, DateTime expires)
         {
-            var fieldValues = new FieldValues(3); // capacity
-            fieldValues.Add(valueField, value);
-            fieldValues.Add(expiresField, expires);
+            var fieldValues = new FieldValues(3) // capacity
+            {
+                {valueField, value},
+                { expiresField, expires}
+            }; 
 
             if (fileDb.GetRecordByKey(key, new string[0], false) == null)
             {

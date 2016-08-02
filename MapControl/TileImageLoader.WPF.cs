@@ -293,11 +293,11 @@ namespace MapControl
 
         private static class TileCache
         {
-            private const int imageBufferOffset = sizeof(Int64);
+            private const int imageBufferOffset = sizeof(long);
 
             public static string Key(string sourceName, Tile tile)
             {
-                return string.Format("{0}/{1}/{2}/{3}/{4}", sourceName, tile.ZoomLevel, tile.XIndex, tile.Y, tile.Rotation);
+                return $"{sourceName}/{tile.ZoomLevel}/{tile.XIndex}/{tile.Y}/{tile.Rotation}";
             }
 
             public static MemoryStream ImageStream(byte[] cacheBuffer)
