@@ -48,6 +48,8 @@ namespace MapControl
                 }
 
                 uriFormat = value;
+                
+                // TODO: code cleanup required below:
                 /*
                 if (uriFormat.Contains("{x}") && uriFormat.Contains("{y}") && uriFormat.Contains("{z}"))
                 {

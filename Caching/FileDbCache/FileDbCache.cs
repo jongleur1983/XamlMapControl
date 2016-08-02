@@ -440,13 +440,14 @@ namespace Caching
                 Directory.CreateDirectory(Path.GetDirectoryName(path));
             }
 
-            fileDb.Create(path,
+            fileDb.Create(
+                path,
                 new Field[]
-            {
-                new Field(keyField, DataTypeEnum.String) { IsPrimaryKey = true },
-                new Field(valueField, DataTypeEnum.Byte) { IsArray = true },
-                new Field(expiresField, DataTypeEnum.DateTime)
-            });
+                {
+                    new Field(keyField, DataTypeEnum.String) { IsPrimaryKey = true },
+                    new Field(valueField, DataTypeEnum.Byte) { IsArray = true },
+                    new Field(expiresField, DataTypeEnum.DateTime)
+                });
 
             Trace.TraceInformation("FileDbCache: Created database {0}", path);
         }

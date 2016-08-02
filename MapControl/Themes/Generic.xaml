@@ -50,8 +50,11 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Rectangle Fill="{TemplateBinding Background}"/>
-                        <Path Grid.Row="1" Fill="{TemplateBinding Background}" Data="M 0,-0.5 L 0,16 16,-0.5"/>
-                        <ContentPresenter Content="{TemplateBinding Content}"
+                        <Path Grid.Row="1"
+                              Fill="{TemplateBinding Background}"
+                              Data="M 0,-0.5 L 0,16 16,-0.5"/>
+                        <ContentPresenter Grid.Row="0"
+                                          Content="{TemplateBinding Content}"
                                           ContentTemplate="{TemplateBinding ContentTemplate}"
                                           Margin="{TemplateBinding Padding}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
