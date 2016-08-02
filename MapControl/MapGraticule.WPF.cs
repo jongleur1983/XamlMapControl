@@ -120,7 +120,9 @@ namespace MapControl
                         }
                     }
 
-                    var removeKeys = glyphRuns.Keys.Where(k => !latLabels.Any(l => l.Text == k) && !lonLabels.Any(l => l.Text == k));
+                    var removeKeys = glyphRuns.Keys
+                        .Where(k => latLabels.All(l => l.Text != k))
+                        .Where(k => lonLabels.All(l => l.Text != k));
 
                     foreach (var key in removeKeys.ToList())
                     {

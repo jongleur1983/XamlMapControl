@@ -32,7 +32,7 @@ namespace MapControl
         {
             var strings = s.Split(new char[] { ' ', ';' }, StringSplitOptions.RemoveEmptyEntries);
 
-            return new LocationCollection(strings.Select(l => Location.Parse(l)));
+            return new LocationCollection(strings.Select(Location.Parse));
         }
     }
 }
