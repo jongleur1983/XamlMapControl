@@ -4,6 +4,8 @@
 
 using System.Windows;
 using System.Windows.Input;
+using GenericDependencyProperties;
+using GenericDependencyProperties.GenericMetadata;
 
 namespace MapControl
 {
@@ -12,17 +14,25 @@ namespace MapControl
     /// </summary>
     public class Map : MapBase
     {
-        public static readonly DependencyProperty ManipulationModeProperty = DependencyProperty.Register(
-            nameof(ManipulationMode),
-            typeof(ManipulationModes),
-            typeof(Map),
-            new PropertyMetadata(ManipulationModes.All));
+        public static readonly DependencyProperty ManipulationModeProperty = GenericDependencyProperty.Register(
+            map => map.ManipulationMode,
+            new GenericPropertyMetadata<ManipulationModes, Map>(ManipulationModes.All));
+        // the following has been replaced by the generic variant above:
+        //public static readonly DependencyProperty ManipulationModeProperty = DependencyProperty.Register(
+        //    nameof(ManipulationMode),
+        //    typeof(ManipulationModes),
+        //    typeof(Map),
+        //    new PropertyMetadata(ManipulationModes.All));
 
-        public static readonly DependencyProperty MouseWheelZoomDeltaProperty = DependencyProperty.Register(
-            nameof(MouseWheelZoomDelta),
-            typeof(double),
-            typeof(Map),
-            new PropertyMetadata(1d));
+        public static readonly DependencyProperty MouseWheelZoomDeltaProperty = GenericDependencyProperty.Register(
+            map => map.MouseWheelZoomDelta,
+            new GenericPropertyMetadata<double, Map>(1d));
+        // the following has been replaced by the generic variant above:
+        //public static readonly DependencyProperty MouseWheelZoomDeltaProperty = DependencyProperty.Register(
+        //    nameof(MouseWheelZoomDelta),
+        //    typeof(double),
+        //    typeof(Map),
+        //    new PropertyMetadata(1d));
 
         private Point? mousePosition;
 

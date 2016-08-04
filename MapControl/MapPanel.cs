@@ -3,6 +3,8 @@
 // Licensed under the Microsoft Public License (Ms-PL)
 
 using System;
+using GenericDependencyProperties;
+using GenericDependencyProperties.GenericMetadata;
 #if WINDOWS_RUNTIME
 using Windows.Foundation;
 using Windows.UI.Xaml;
@@ -21,11 +23,18 @@ namespace MapControl
     /// </summary>
     public partial class MapPanel : PanelBase, IMapElement
     {
-        public static readonly DependencyProperty LocationProperty = DependencyProperty.RegisterAttached(
-            nameof(Location),
-            typeof(Location),
-            typeof(MapPanel),
-            new PropertyMetadata(null, LocationPropertyChanged));
+        // TODO: why is Location not a property itself?
+        public static readonly DependencyProperty LocationProperty = GenericDependencyProperty.Register(
+            "Location",
+            new GenericPropertyMetadata<Location, MapPanel>(
+                null,
+                LocationPropertyChanged));
+        // the following has been replaced by the generic variant above:
+        //public static readonly DependencyProperty LocationProperty = DependencyProperty.RegisterAttached(
+        //    nameof(Location),
+        //    typeof(Location),
+        //    typeof(MapPanel),
+        //    new PropertyMetadata(null, LocationPropertyChanged));
 
         // TODO: requires https://github.com/jongleur1983/genericDependencyProperties/issues/5
         public static readonly DependencyProperty ViewportPositionProperty = DependencyProperty.RegisterAttached(
@@ -119,17 +128,13 @@ namespace MapControl
             }
         }
 
-        private static void LocationPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        private static void LocationPropertyChanged(MapPanel element, DependencyPropertyChangedEventArgs<Location> e)
         {
-            var element = obj as UIElement;
-
             if (element != null)
             {
-                var mapElement = element as IMapElement;
-                var parentMap = mapElement != null ? mapElement.ParentMap : GetParentMap(element);
-                var location = e.NewValue as Location;
-
-                if (location == null)
+                var parentMap = element.ParentMap;
+                
+                if (e.NewValue == null)
                 {
                     ArrangeElementWithoutLocation(element, Size.Empty);
                 }
@@ -138,7 +143,7 @@ namespace MapControl
                     ArrangeElementWithLocation(element); // arrange element when Location was null before
                 }
 
-                SetViewportPosition(element, parentMap, location);
+                SetViewportPosition(element, parentMap, e.NewValue);
             }
         }
 

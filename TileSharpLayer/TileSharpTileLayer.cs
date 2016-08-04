@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows;
+using GenericDependencyProperties;
+using GenericDependencyProperties.GenericMetadata;
 using MapControl;
 using TileSharp;
 using TileSharp.LabelOverlapPreventers;
@@ -21,15 +23,19 @@ namespace TileSharpLayer
             set { SetValue(LayerConfigProperty, value); }
         }
 
-        private static readonly Type LayerConfigPropertyType = typeof(LayerConfig);
-
-        public static readonly DependencyProperty LayerConfigProperty = DependencyProperty.Register(
-            nameof(LayerConfig),
-            LayerConfigPropertyType,
-            typeof(TileSharpTileLayer),
-            new PropertyMetadata(
+        public static readonly DependencyProperty LayerConfigProperty = GenericDependencyProperty.Register(
+            tstl => tstl.LayerConfig,
+            new GenericPropertyMetadata<LayerConfig, TileSharpTileLayer>(
                 null,
-                (o, e) => ((TileSharpTileLayer)o).ConfigChanged()));
+                (tstl, args) => tstl.ConfigChanged()));
+        // replaced by the generic variant above:
+        //public static readonly DependencyProperty LayerConfigProperty = DependencyProperty.Register(
+        //    nameof(LayerConfig),
+        //    LayerConfigPropertyType,
+        //    typeof(TileSharpTileLayer),
+        //    new PropertyMetadata(
+        //        null,
+        //        (o, e) => ((TileSharpTileLayer)o).ConfigChanged()));
         #endregion
 
         #region OverlapPreventer
@@ -39,15 +45,19 @@ namespace TileSharpLayer
             set { SetValue(OverlapPreventerProperty, value); }
         }
 
-        private static readonly Type OverlapPreventerPropertyType = typeof(ILabelOverlapPreventer);
-
-        public static readonly DependencyProperty OverlapPreventerProperty = DependencyProperty.Register(
-            nameof(OverlapPreventer),
-            OverlapPreventerPropertyType,
-            typeof(TileSharpTileLayer),
-            new PropertyMetadata(
+        public static readonly DependencyProperty OverlapPreventerProperty = GenericDependencyProperty.Register(
+            tstl => tstl.OverlapPreventer,
+            new GenericPropertyMetadata<ILabelOverlapPreventer, TileSharpTileLayer>(
                 null,
-                (o, e) => ((TileSharpTileLayer)o).ConfigChanged()));
+                (tstl, args) => tstl.ConfigChanged()));
+        // replaced by the generic variant above:
+        //public static readonly DependencyProperty OverlapPreventerProperty = DependencyProperty.Register(
+        //    nameof(OverlapPreventer),
+        //    OverlapPreventerPropertyType,
+        //    typeof(TileSharpTileLayer),
+        //    new PropertyMetadata(
+        //        null,
+        //        (o, e) => ((TileSharpTileLayer)o).ConfigChanged()));
         #endregion
 
         #region FeatureCache
@@ -57,15 +67,19 @@ namespace TileSharpLayer
             set { SetValue(FeatureCacheProperty, value); }
         }
 
-        private static readonly Type FeatureCachePropertyType = typeof(IFeatureCache);
-
-        public static readonly DependencyProperty FeatureCacheProperty = DependencyProperty.Register(
-            nameof(FeatureCache),
-            FeatureCachePropertyType,
-            typeof(TileSharpTileLayer),
-            new PropertyMetadata(
+        public static readonly DependencyProperty FeatureCacheProperty = GenericDependencyProperty.Register(
+            tstl => tstl.FeatureCache,
+            new GenericPropertyMetadata<IFeatureCache, TileSharpTileLayer>(
                 null,
-                (o, e) => ((TileSharpTileLayer)o).ConfigChanged()));
+                (tstl, args) => tstl.ConfigChanged()));
+        // replaced by the generic variant above:
+        //public static readonly DependencyProperty FeatureCacheProperty = DependencyProperty.Register(
+        //    nameof(FeatureCache),
+        //    FeatureCachePropertyType,
+        //    typeof(TileSharpTileLayer),
+        //    new PropertyMetadata(
+        //        null,
+        //        (o, e) => ((TileSharpTileLayer)o).ConfigChanged()));
         #endregion
 
 

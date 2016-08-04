@@ -9,6 +9,9 @@ using Windows.UI.Xaml.Media;
 #else
 using System.Windows;
 using System.Windows.Media;
+using GenericDependencyProperties;
+using GenericDependencyProperties.GenericMetadata;
+
 #endif
 
 namespace MapControl
@@ -18,37 +21,61 @@ namespace MapControl
     /// </summary>
     public class MapRectangle : MapPath
     {
-        public static readonly DependencyProperty SouthProperty = DependencyProperty.Register(
-            nameof(South),
-            typeof(double),
-            typeof(MapRectangle),
-            new PropertyMetadata(
+        public static readonly DependencyProperty SouthProperty = GenericDependencyProperty.Register(
+            mr => mr.South,
+            new GenericPropertyMetadata<double, MapRectangle>(
                 double.NaN,
-                (o, e) => ((MapRectangle)o).UpdateData()));
+                (mr, args) => mr.UpdateData()));
+        // replaced by the generic variant above:
+        //public static readonly DependencyProperty SouthProperty = DependencyProperty.Register(
+        //    nameof(South),
+        //    typeof(double),
+        //    typeof(MapRectangle),
+        //    new PropertyMetadata(
+        //        double.NaN,
+        //        (o, e) => ((MapRectangle)o).UpdateData()));
 
-        public static readonly DependencyProperty NorthProperty = DependencyProperty.Register(
-            nameof(North),
-            typeof(double),
-            typeof(MapRectangle),
-            new PropertyMetadata(
+        public static readonly DependencyProperty NorthProperty = GenericDependencyProperty.Register(
+            mr => mr.North,
+            new GenericPropertyMetadata<double, MapRectangle>(
                 double.NaN,
-                (o, e) => ((MapRectangle)o).UpdateData()));
+                (mr, args) => mr.UpdateData()));
+        // replaced by the generic variant above:
+        //public static readonly DependencyProperty NorthProperty = DependencyProperty.Register(
+        //    nameof(North),
+        //    typeof(double),
+        //    typeof(MapRectangle),
+        //    new PropertyMetadata(
+        //        double.NaN,
+        //        (o, e) => ((MapRectangle)o).UpdateData()));
 
-        public static readonly DependencyProperty WestProperty = DependencyProperty.Register(
-            nameof(West),
-            typeof(double),
-            typeof(MapRectangle),
-            new PropertyMetadata(
+        public static readonly DependencyProperty WestProperty = GenericDependencyProperty.Register(
+            mr => mr.West,
+            new GenericPropertyMetadata<double, MapRectangle>(
                 double.NaN,
-                (o, e) => ((MapRectangle)o).UpdateData()));
+                (mr, args) => mr.UpdateData()));
+        // replaced by the generic variant above:
+        //public static readonly DependencyProperty WestProperty = DependencyProperty.Register(
+        //    nameof(West),
+        //    typeof(double),
+        //    typeof(MapRectangle),
+        //    new PropertyMetadata(
+        //        double.NaN,
+        //        (o, e) => ((MapRectangle)o).UpdateData()));
 
-        public static readonly DependencyProperty EastProperty = DependencyProperty.Register(
-            nameof(East),
-            typeof(double),
-            typeof(MapRectangle),
-            new PropertyMetadata(
+        public static readonly DependencyProperty EastProperty = GenericDependencyProperty.Register(
+            mr => mr.East,
+            new GenericPropertyMetadata<double, MapRectangle>(
                 double.NaN,
-                (o, e) => ((MapRectangle)o).UpdateData()));
+                (mr, args) => mr.UpdateData()));
+        // replaced by the generic variant above:
+        //public static readonly DependencyProperty EastProperty = DependencyProperty.Register(
+        //    nameof(East),
+        //    typeof(double),
+        //    typeof(MapRectangle),
+        //    new PropertyMetadata(
+        //        double.NaN,
+        //        (o, e) => ((MapRectangle)o).UpdateData()));
 
         public MapRectangle()
         {

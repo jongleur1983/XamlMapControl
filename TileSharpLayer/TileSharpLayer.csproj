@@ -68,6 +68,10 @@
     <Compile Include="TileSharpTileLayer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GenericDependencyProperties\GenericDependencyProperties\GenericDependencyProperties.csproj">
+      <Project>{07391C51-8B33-4427-94E4-F98765886498}</Project>
+      <Name>GenericDependencyProperties</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MapControl\MapControl.WPF.csproj">
       <Project>{226F3575-B683-446D-A2F0-181291DC8787}</Project>
       <Name>MapControl.WPF</Name>

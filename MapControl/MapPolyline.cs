@@ -5,6 +5,8 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using GenericDependencyProperties;
+using GenericDependencyProperties.GenericMetadata;
 #if WINDOWS_RUNTIME
 using Windows.Foundation;
 using Windows.UI.Xaml;
@@ -27,21 +29,33 @@ namespace MapControl
 #else
         private static readonly Type LocationsPropertyType = typeof(IEnumerable<Location>);
 #endif
-        public static readonly DependencyProperty LocationsProperty = DependencyProperty.Register(
-            nameof(Locations),
-            LocationsPropertyType,
-            typeof(MapPolyline),
-            new PropertyMetadata(
+
+        public static readonly DependencyProperty LocationsProperty = GenericDependencyProperty.Register(
+            mpl => mpl.Locations,
+            new GenericPropertyMetadata<IEnumerable<Location>, MapPolyline>(
                 null,
                 LocationsPropertyChanged));
+        // replaced by the generic variant above:
+        //public static readonly DependencyProperty LocationsProperty = DependencyProperty.Register(
+        //    nameof(Locations),
+        //    LocationsPropertyType,
+        //    typeof(MapPolyline),
+        //    new PropertyMetadata(
+        //        null,
+        //        LocationsPropertyChanged));
 
-        public static readonly DependencyProperty IsClosedProperty = DependencyProperty.Register(
-            nameof(IsClosed),
-            typeof(bool),
-            typeof(MapPolyline),
-            new PropertyMetadata(
+        public static readonly DependencyProperty IsClosedProperty = GenericDependencyProperty.Register(
+            mpl => mpl.IsClosed,
+            new GenericPropertyMetadata<bool, MapPolyline>(
                 false,
-                (o, e) => ((MapPolyline)o).UpdateData()));
+                (mpl, args) => mpl.UpdateData()));
+        //public static readonly DependencyProperty IsClosedProperty = DependencyProperty.Register(
+        //    nameof(IsClosed),
+        //    typeof(bool),
+        //    typeof(MapPolyline),
+        //    new PropertyMetadata(
+        //        false,
+        //        (o, e) => ((MapPolyline)o).UpdateData()));
 
         /// <summary>
         /// Gets or sets the locations that define the polyline points.
@@ -69,11 +83,10 @@ namespace MapControl
             UpdateData();
         }
 
-        private static void LocationsPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        private static void LocationsPropertyChanged(MapPolyline mapPolyline, DependencyPropertyChangedEventArgs<IEnumerable<Location>> e)
         {
-            var mapPolyline = (MapPolyline)obj;
-            var oldCollection = e.OldValue as INotifyCollectionChanged;
-            var newCollection = e.NewValue as INotifyCollectionChanged;
+            var oldCollection = e.OldValue as INotifyCollectionChanged; // TODO: this is an unsave typecast (and was it before the generics as well)
+            var newCollection = e.NewValue as INotifyCollectionChanged; // TODO: this is an unsave typecast (and was it before the generics as well)
 
             if (oldCollection != null)
             {
