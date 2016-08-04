@@ -100,7 +100,8 @@ namespace MapControl
                 Replace("{x}", x.ToString()).
                 Replace("{y}", y.ToString()).
                 Replace("{z}", zoomLevel.ToString()).
-                Replace("{r}", rotation.ToString())
+                Replace("{r}", rotation.ToString()).
+                Replace("{c}", "a")
                 );
         }
 
