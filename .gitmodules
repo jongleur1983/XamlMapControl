@@ -1,0 +1,4 @@
+[submodule "GenericDependencyProperties"]
+	path = GenericDependencyProperties
+	url = https://github.com/jongleur1983/genericDependencyProperties
+	branch = master
