@@ -27,6 +27,7 @@ namespace MapControl
             typeof(MapPanel),
             new PropertyMetadata(null, LocationPropertyChanged));
 
+        // TODO: requires https://github.com/jongleur1983/genericDependencyProperties/issues/5
         public static readonly DependencyProperty ViewportPositionProperty = DependencyProperty.RegisterAttached(
             "ViewportPosition",
             typeof(Point?),

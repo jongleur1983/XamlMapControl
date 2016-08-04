@@ -5,11 +5,14 @@
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using GenericDependencyProperties;
+using GenericDependencyProperties.GenericMetadata;
 
 namespace MapControl
 {
     public partial class MapPath : Shape
     {
+        // TODO: requires https://github.com/jongleur1983/genericDependencyProperties/issues/15
         public static readonly DependencyProperty DataProperty = DependencyProperty.Register(
             nameof(Data),
             typeof(Geometry),

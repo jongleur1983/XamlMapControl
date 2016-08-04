@@ -28,7 +28,7 @@ namespace MapControl
 
         static Map()
         {
-            IsManipulationEnabledProperty.OverrideMetadata(typeof(Map), new FrameworkPropertyMetadata(true));
+            IsManipulationEnabledProperty.OverrideMetadata(typeof(Map), new FrameworkPropertyMetadata(true)); // TODO: see https://github.com/jongleur1983/genericDependencyProperties/issues/14
         }
 
         /// <summary>

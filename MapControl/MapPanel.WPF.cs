@@ -8,6 +8,7 @@ namespace MapControl
 {
     public partial class MapPanel
     {
+        // TODO: requires https://github.com/jongleur1983/genericDependencyProperties/issues/6
         private static readonly DependencyPropertyKey ParentMapPropertyKey = DependencyProperty.RegisterAttachedReadOnly(
             nameof(ParentMap),
             typeof(MapBase),
