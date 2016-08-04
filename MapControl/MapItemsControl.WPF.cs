@@ -9,6 +9,8 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using GenericDependencyProperties;
+using GenericDependencyProperties.GenericMetadata;
 
 namespace MapControl
 {
@@ -17,11 +19,16 @@ namespace MapControl
     /// </summary>
     public class MapItemsControl : ListBox
     {
-        public static readonly DependencyProperty SelectionGeometryProperty = DependencyProperty.Register(
-            nameof(SelectionGeometry),
-            typeof(Geometry),
-            typeof(MapItemsControl),
-            new PropertyMetadata((o, e) => ((MapItemsControl)o).SelectionGeometryPropertyChanged((Geometry)e.NewValue)));
+        public static readonly DependencyProperty SelectionGeometryProperty = GenericDependencyProperty.Register(
+            mic => mic.SelectionGeometry,
+            new GenericPropertyMetadata<Geometry, MapItemsControl>(
+                (mic, args) => mic.SelectionGeometryPropertyChanged(args.NewValue)));
+        // the following has been replaced by the generic variant above:
+        //public static readonly DependencyProperty SelectionGeometryProperty = DependencyProperty.Register(
+        //    nameof(SelectionGeometry),
+        //    typeof(Geometry),
+        //    typeof(MapItemsControl),
+        //    new PropertyMetadata((o, e) => ((MapItemsControl)o).SelectionGeometryPropertyChanged((Geometry)e.NewValue)));
 
         static MapItemsControl()
         {

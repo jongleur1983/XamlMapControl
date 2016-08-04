@@ -4,6 +4,8 @@
 
 using System;
 using System.Globalization;
+using GenericDependencyProperties;
+using GenericDependencyProperties.GenericMetadata;
 #if WINDOWS_RUNTIME
 using Windows.Foundation;
 using Windows.UI.Xaml;
@@ -24,19 +26,29 @@ namespace MapControl
     /// </summary>
     public partial class MapImageLayer : MapPanel
     {
-        public static readonly DependencyProperty UriFormatProperty = DependencyProperty.Register(
-            nameof(UriFormat),
-            typeof(string),
-            typeof(MapImageLayer),
-            new PropertyMetadata(
+        public static readonly DependencyProperty UriFormatProperty = GenericDependencyProperty.Register(
+            mil => mil.UriFormat,
+            new GenericPropertyMetadata<string, MapImageLayer>(
                 null,
-                (o, e) => ((MapImageLayer)o).UpdateImage()));
+                (mil, args) => mil.UpdateImage()));
+        // the following has been replaced by the generic variant above:
+        //public static readonly DependencyProperty UriFormatProperty = DependencyProperty.Register(
+        //    nameof(UriFormat),
+        //    typeof(string),
+        //    typeof(MapImageLayer),
+        //    new PropertyMetadata(
+        //        null,
+        //        (o, e) => ((MapImageLayer)o).UpdateImage()));
 
-        public static readonly DependencyProperty RelativeImageSizeProperty = DependencyProperty.Register(
-            nameof(RelativeImageSize),
-            typeof(double),
-            typeof(MapImageLayer),
-            new PropertyMetadata(1d));
+        public static readonly DependencyProperty RelativeImageSizeProperty = GenericDependencyProperty.Register(
+            mil => mil.RelativeImageSize,
+            new GenericPropertyMetadata<double, MapImageLayer>(1));
+        // the following has been replaced by the generic variant above:
+        //public static readonly DependencyProperty RelativeImageSizeProperty = DependencyProperty.Register(
+        //    nameof(RelativeImageSize),
+        //    typeof(double),
+        //    typeof(MapImageLayer),
+        //    new PropertyMetadata(1d));
 
         private int currentImageIndex;
         private bool updateInProgress;

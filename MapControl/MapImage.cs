@@ -8,6 +8,9 @@ using Windows.UI.Xaml.Media;
 #else
 using System.Windows;
 using System.Windows.Media;
+using GenericDependencyProperties;
+using GenericDependencyProperties.GenericMetadata;
+
 #endif
 
 namespace MapControl
@@ -17,13 +20,17 @@ namespace MapControl
     /// </summary>
     public class MapImage : MapRectangle
     {
-        public static readonly DependencyProperty SourceProperty = DependencyProperty.Register(
-            nameof(Source),
-            typeof(ImageSource),
-            typeof(MapImage),
-            new PropertyMetadata(
-                null,
-                (o, e) => ((MapImage)o).SourceChanged((ImageSource)e.NewValue)));
+        public static readonly DependencyProperty SourceProperty = GenericDependencyProperty.Register(
+            src => src.Source,
+            new GenericPropertyMetadata<ImageSource, MapImage>((mi, args) => mi.SourceChanged(args.NewValue)));
+        // the following has been replaced by the generic variant above:
+        //public static readonly DependencyProperty SourceProperty = DependencyProperty.Register(
+        //    nameof(Source),
+        //    typeof(ImageSource),
+        //    typeof(MapImage),
+        //    new PropertyMetadata(
+        //        null,
+        //        (o, e) => ((MapImage)o).SourceChanged((ImageSource)e.NewValue)));
 
         public ImageSource Source
         {

@@ -5,6 +5,8 @@
 using System;
 using System.Collections.Specialized;
 using System.Linq;
+using GenericDependencyProperties;
+using GenericDependencyProperties.GenericMetadata;
 #if WINDOWS_RUNTIME
 using Windows.Foundation;
 using Windows.UI.Xaml;
@@ -31,54 +33,90 @@ namespace MapControl
         public static TimeSpan AnimationDuration = TimeSpan.FromSeconds(0.5);
         public static EasingFunctionBase AnimationEasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseOut };
 
-        public static readonly DependencyProperty TileLayersProperty = DependencyProperty.Register(
-            nameof(TileLayers),
-            typeof(TileLayerCollection),
-            typeof(MapBase),
-            new PropertyMetadata(
+        public static readonly DependencyProperty TileLayersProperty = GenericDependencyProperty.Register(
+            mb => mb.TileLayers,
+            new GenericPropertyMetadata<TileLayerCollection, MapBase>(
                 null,
-                (o, e) => ((MapBase)o).TileLayersPropertyChanged((TileLayerCollection)e.OldValue, (TileLayerCollection)e.NewValue)));
+                (mb, args) => mb.TileLayersPropertyChanged(args.OldValue, args.NewValue)));
+        // the following has been replaced by the generic variant above:
+        //public static readonly DependencyProperty TileLayersProperty = DependencyProperty.Register(
+        //    nameof(TileLayers),
+        //    typeof(TileLayerCollection),
+        //    typeof(MapBase),
+        //    new PropertyMetadata(
+        //        null,
+        //        (o, e) => ((MapBase)o).TileLayersPropertyChanged((TileLayerCollection)e.OldValue, (TileLayerCollection)e.NewValue)));
 
-        public static readonly DependencyProperty TileLayerProperty = DependencyProperty.Register(
-            nameof(TileLayer),
-            typeof(TileLayer),
-            typeof(MapBase),
-            new PropertyMetadata(
+        public static readonly DependencyProperty TileLayerProperty = GenericDependencyProperty.Register(
+            mb => mb.TileLayer,
+            new GenericPropertyMetadata<TileLayer, MapBase>(
                 null,
-                (o, e) => ((MapBase)o).TileLayerPropertyChanged((TileLayer)e.NewValue)));
+                (mb, args) => mb.TileLayerPropertyChanged(args.NewValue)));
+        // the following has been replaced by the generic variant above:
+        //public static readonly DependencyProperty TileLayerProperty = DependencyProperty.Register(
+        //    nameof(TileLayer),
+        //    typeof(TileLayer),
+        //    typeof(MapBase),
+        //    new PropertyMetadata(
+        //        null,
+        //        (o, e) => ((MapBase)o).TileLayerPropertyChanged((TileLayer)e.NewValue)));
 
-        public static readonly DependencyProperty TileOpacityProperty = DependencyProperty.Register(
-            nameof(TileOpacity),
-            typeof(double),
-            typeof(MapBase),
-            new PropertyMetadata(
-                1d,
-                (o, e) => ((MapBase)o).tileContainer.Opacity = (double)e.NewValue));
+        public static readonly DependencyProperty TileOpacityProperty = GenericDependencyProperty.Register(
+            mb => mb.TileOpacity,
+            new GenericPropertyMetadata<double, MapBase>(
+                1,
+                (mb, args) => mb.tileContainer.Opacity = args.NewValue));
+        // the following has been replaced by the generic variant above:
+        //public static readonly DependencyProperty TileOpacityProperty = DependencyProperty.Register(
+        //    nameof(TileOpacity),
+        //    typeof(double),
+        //    typeof(MapBase),
+        //    new PropertyMetadata(
+        //        1d,
+        //        (o, e) => ((MapBase)o).tileContainer.Opacity = (double)e.NewValue));
 
-        public static readonly DependencyProperty MinZoomLevelProperty = DependencyProperty.Register(
-            nameof(MinZoomLevel),
-            typeof(double),
-            typeof(MapBase),
-            new PropertyMetadata(
-                1d,
-                (o, e) => ((MapBase)o).MinZoomLevelPropertyChanged((double)e.NewValue)));
+        public static readonly DependencyProperty MinZoomLevelProperty = GenericDependencyProperty.Register(
+            mb => mb.MinZoomLevel,
+            new GenericPropertyMetadata<double, MapBase>(
+                1,
+                (mb, args) => mb.MinZoomLevelPropertyChanged(args.NewValue)));
+        // the following has been replaced by the generic variant above:
+        //public static readonly DependencyProperty MinZoomLevelProperty = DependencyProperty.Register(
+        //    nameof(MinZoomLevel),
+        //    typeof(double),
+        //    typeof(MapBase),
+        //    new PropertyMetadata(
+        //        1d,
+        //        (o, e) => ((MapBase)o).MinZoomLevelPropertyChanged((double)e.NewValue)));
 
-        public static readonly DependencyProperty MaxZoomLevelProperty = DependencyProperty.Register(
-            nameof(MaxZoomLevel),
-            typeof(double),
-            typeof(MapBase),
-            new PropertyMetadata(
-                18d,
-                (o, e) => ((MapBase)o).MaxZoomLevelPropertyChanged((double)e.NewValue)));
+        public static readonly DependencyProperty MaxZoomLevelProperty = GenericDependencyProperty.Register(
+            mb => mb.MaxZoomLevel,
+            new GenericPropertyMetadata<double, MapBase>(
+                18,
+                (mb, args) => mb.MaxZoomLevelPropertyChanged(args.NewValue)));
+        // the following has been replaced by the generic variant above:
+        //public static readonly DependencyProperty MaxZoomLevelProperty = DependencyProperty.Register(
+        //    nameof(MaxZoomLevel),
+        //    typeof(double),
+        //    typeof(MapBase),
+        //    new PropertyMetadata(
+        //        18d,
+        //        (o, e) => ((MapBase)o).MaxZoomLevelPropertyChanged((double)e.NewValue)));
 
-        //TODO: inspect what the CenterPoint property does as it's not directly backed by a CLR property.
-        internal static readonly DependencyProperty CenterPointProperty = DependencyProperty.Register(
+        internal static readonly DependencyProperty CenterPointProperty = GenericDependencyProperty.Register(
             "CenterPoint",
-            typeof(Point),
-            typeof(MapBase),
-            new PropertyMetadata(
+            new GenericPropertyMetadata<Point, MapBase>(
                 new Point(),
-                (o, e) => ((MapBase)o).CenterPointPropertyChanged((Point)e.NewValue)));
+                (mb, args) => mb.CenterPointPropertyChanged(args.NewValue)));
+
+        // the following has been replaced by the generic variant above:
+        //internal static readonly DependencyProperty CenterPointProperty = DependencyProperty.Register(
+        //    "CenterPoint",
+        //    typeof(Point),
+        //    typeof(MapBase),
+        //    new PropertyMetadata(
+        //        new Point(),
+        //        (o, e) => ((MapBase)o).CenterPointPropertyChanged((Point)e.NewValue)));
 
         private readonly TileContainer tileContainer = new TileContainer();
         private readonly MapTransform mapTransform = new MercatorTransform();

@@ -3,6 +3,8 @@
 // Licensed under the Microsoft Public License (Ms-PL)
 
 using System;
+using GenericDependencyProperties;
+using GenericDependencyProperties.GenericMetadata;
 #if WINDOWS_RUNTIME
 using Windows.UI.Xaml;
 #else
@@ -22,11 +24,16 @@ namespace MapControl
         public static double[] LineSpacings =
             new double[] { 1d / 60d, 1d / 30d, 1d / 12d, 1d / 6d, 1d / 4d, 1d / 3d, 1d / 2d, 1d, 2d, 5d, 10d, 15d, 20d, 30d, 45d };
 
-        public static readonly DependencyProperty MinLineSpacingProperty = DependencyProperty.Register(
-            nameof(MinLineSpacing),
-            typeof(double),
-            typeof(MapGraticule),
-            new PropertyMetadata(150d));
+        public static readonly DependencyProperty MinLineSpacingProperty = GenericDependencyProperty.Register(
+            mg => mg.MinLineSpacing,
+            new GenericPropertyMetadata<double, MapGraticule>(
+                150));
+        // the following has been replaced by the generic variant above:
+        //public static readonly DependencyProperty MinLineSpacingProperty = DependencyProperty.Register(
+        //    nameof(MinLineSpacing),
+        //    typeof(double),
+        //    typeof(MapGraticule),
+        //    new PropertyMetadata(150d));
 
         /// <summary>
         /// Minimum spacing in pixels between adjacent graticule lines.
