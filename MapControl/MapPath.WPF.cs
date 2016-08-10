@@ -12,12 +12,9 @@ namespace MapControl
 {
     public partial class MapPath : Shape
     {
-        // TODO: requires https://github.com/jongleur1983/genericDependencyProperties/issues/15
-        public static readonly DependencyProperty DataProperty = DependencyProperty.Register(
-            nameof(Data),
-            typeof(Geometry),
-            typeof(MapPath),
-            new FrameworkPropertyMetadata(
+        public static readonly DependencyProperty DataProperty = GenericDependencyProperty.Register(
+            mp => mp.Data,
+            new GenericFrameworkPropertyMetadata<Geometry, MapPath>(
                 null,
                 FrameworkPropertyMetadataOptions.AffectsRender));
 
