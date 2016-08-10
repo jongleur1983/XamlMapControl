@@ -12,9 +12,7 @@ namespace MapControl
 {
     public partial class MapBase
     {
-        // TODO: requires https://github.com/jongleur1983/genericDependencyProperties/issues/13
-        public static readonly DependencyProperty ForegroundProperty =
-            System.Windows.Controls.Control.ForegroundProperty.AddOwner(typeof(MapBase));
+        public static readonly DependencyProperty ForegroundProperty = Control.ForegroundProperty.AddOwner<MapBase>();
 
         public static readonly DependencyProperty CenterProperty = GenericDependencyProperty.Register<Location, MapBase>(
             mb => mb.Center,
